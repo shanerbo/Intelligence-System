@@ -52,6 +52,7 @@ constraint forall (p in pizzas)(forall(c in coupons)(Justifies[c,p] -> Paid[p]))
 var int: minCost = sum(p in pizzas where Paid[p] == true)(price[p]);
 var int: maxCost = sum(price);
 % if p is not used it will be false, if p is used it will be true so that we could multiply them and sum them up
+
 constraint minCost <= maxCost;
 
 
@@ -73,8 +74,7 @@ output[
 output [
         "Pizzas Paid :\n  \(Paid)\nCoupons Used:\n  \(Used)\nMinimum cost:\n  \(minCost)\n" 
         ];
-output [show(UsedFor[i, j] ) ++ if UsedFor[i, j] == 1 then "Applied coupon c\(i) on pizza p\(j)" 
+output [show( if UsedFor[i, j] == 1 then "Applied coupon c\(i) on pizza p\(j)" 
              else ""
-             endif  | 
-             i in coupons, j in pizzas
-             ];
+             endif)  | 
+             i in coupons, j in pizzas] ;
