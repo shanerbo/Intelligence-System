@@ -29,52 +29,61 @@ array[pizzas] of var bool: Paid;
 % Unary relation symbol Used, for the set of coupons that will be used;
 array[coupons] of var bool: Used;  
                        
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% constraint %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 1. We pay for exactly the pizzas that we don’t get free by using coupons:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% constraints %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% reference:
+% David Mitchell. 
+% Notes on Satisfiability-Based Problem Solving Representing Problems: 
+% Examples from the 2015 LP/CP Programming Competition. October 28, 2019
+
+% 1. We only pay for the pizzas which is not the free pizzas by applyting coupon:
 constraint forall(p in pizzas)(Paid[p] <-> not exists(c in coupons)(UsedFor[c,p]));  
        
-% 2. Used is the set of coupons that we use:
+% 2. The Used set contains all the coupon we used:
 constraint forall(c in coupons)(Used[c] <-> exists(p in pizzas)(UsedFor[c,p]));
 
-% 3. Any coupon that is used must be justified by sufficiently many purchased pizzas:
-constraint forall(c in coupons)(Used[c] -> sum(p in pizzas)(Justifies[c,p]) >= buy[c]);
+% 3. We can only apply coupon c if there is sufficient number of pizza we purchase:
+constraint forall(c in coupons)(Used[c] -> sum(p in pizzas )(Justifies[c,p] == true) >= buy[c]);
 
-% 4. The number of pizzas any coupon is used for is not more than the number it allows us to get free:
+% 4. For each coupon c, the number of free pizza we get cannot be greater than the number on coupon c:
 constraint forall(c in coupons)(Used[c] -> (sum(p in pizzas)(UsedFor[c,p]) <= free[c]));
 
-% 5. Each free pizza costs at most as much as the cheapest pizza used to justify use of the relevant coupon:
-constraint forall(c in coupons)(forall (p1,p2 in pizzas where p1 != p2) ((UsedFor[c,p1] /\ Justifies[c,p2]) -> (price[p1] <= price[p2])));
+% 5. The maximum price of free pizzas we claim cannot be greater than the minimum price of purchased pizzas:
+constraint forall(c in coupons)(forall (p1 in pizzas)(forall (p2 in pizzas) (( p1 != p2 /\ UsedFor[c,p1] /\ Justifies[c,p2]) -> (price[p1] <= price[p2]))));
 
-% 6. We pay for every pizza used to justify use of a coupon:
+% 6. For each pizza p, if we use p to justi- fy/claim couponc, p has to be paid, which mean p is in Paid:
 constraint forall (p in pizzas)(forall(c in coupons)(Justifies[c,p] -> Paid[p]));
 
-% 7. Set upper bound of cost. The total cost is not too large:
+% 7. Set upper bound of minimum cost and make sure it will not be greater than the upper bound:
 var int: minCost = sum(p in pizzas where Paid[p] == true)(price[p]);
+% minCost is the least cost to obtain all pizzas.
 var int: maxCost = sum(price);
 % if p is not used it will be false, if p is used it will be true so that we could multiply them and sum them up
 
 constraint minCost <= maxCost;
 
-
-% 8. We also must require that Justifies(c, p) and UsedFor(c, p) hold only of pairs consist- ing of a coupon and a pizza. (For example, if there are 3 coupons and 5 pizzas, we would not want Justifies(4, 5) to hold, as we might then be getting pizza 5 free by applying the non-existent coupon number 4.)
+% 8. We cannot justify/claim coupon c which is not in the coupon set:
 constraint forall(c in coupons)(forall (p in pizzas)(Justifies[c, p] -> (c in coupons /\ p in pizzas)));
 constraint forall(c in coupons)(forall (p in pizzas)(UsedFor[c,p] -> (c in coupons /\ p in pizzas)));
 
-% 9. We cannot apply two coupon to the pizza which is jusified for free pizza
+% 9. We cannot apply more than one coupon c to the pizza p which is justified for free pizza (this one is missing in the lecture notes):
 constraint forall(p in pizzas)((sum(c in coupons)(Justifies[c,p])<=1));
 
+array[coupons] of var string: res;
 solve minimize minCost;
+
+
 
 output["Coupons: \n"];
 output[
-        "  " ++ show(i) ++ ". " ++ "Buy " ++ show(buy[i]) ++ " get " ++ show(free[i]) ++ " free\n" | 
+        "  \(i). Buy \(buy[i]) get \(free[i]) free \n" | 
              i in coupons
       ];
 
 output [
-        "Pizzas Paid :\n  \(Paid)\nCoupons Used:\n  \(Used)\nMinimum cost:\n  \(minCost)\n" 
+        "Pizzas Paid :\n  \(Paid)\nCoupons Used:\n  \(Used)\nMinimum cost:\n  \(minCost)\nMaximum cost:\n  \(maxCost)\n" 
         ];
-output [show( if UsedFor[i, j] == 1 then "Applied coupon c\(i) on pizza p\(j)" 
+output [if fix(UsedFor[i, j]) then "Applied coupon c\(i) on pizza p\(j)\n"
              else ""
-             endif)  | 
+             endif  | 
              i in coupons, j in pizzas] ;
