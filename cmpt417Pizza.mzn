@@ -49,7 +49,7 @@ constraint forall(c in coupons)(Used[c] -> sum(p in pizzas )(Justifies[c,p] == t
 constraint forall(c in coupons)(Used[c] -> (sum(p in pizzas)(UsedFor[c,p]) <= free[c]));
 
 % 5. The maximum price of free pizzas we claim cannot be greater than the minimum price of purchased pizzas:
-constraint forall(c in coupons)(forall (p1 in pizzas)(forall (p2 in pizzas) (( p1 != p2 /\ UsedFor[c,p1] /\ Justifies[c,p2]) -> (price[p1] <= price[p2]))));
+constraint forall(c in coupons)(forall (p1, p2 in pizzas) (( p1 != p2 /\ UsedFor[c,p1] /\ Justifies[c,p2]) -> (price[p1] <= price[p2])));
 
 % 6. For each pizza p, if we use p to justi- fy/claim couponc, p has to be paid, which mean p is in Paid:
 constraint forall (p in pizzas)(forall(c in coupons)(Justifies[c,p] -> Paid[p]));
@@ -63,8 +63,8 @@ var int: maxCost = sum(price);
 constraint minCost <= maxCost;
 
 % 8. We cannot justify/claim coupon c which is not in the coupon set:
-constraint forall(c in coupons)(forall (p in pizzas)(Justifies[c, p] -> (c in coupons /\ p in pizzas)));
-constraint forall(c in coupons)(forall (p in pizzas)(UsedFor[c,p] -> (c in coupons /\ p in pizzas)));
+% constraint forall(c in coupons)(forall (p in pizzas)(Justifies[c, p] -> (c in coupons /\ p in pizzas)));
+% constraint forall(c in coupons)(forall (p in pizzas)(UsedFor[c,p] -> (c in coupons /\ p in pizzas)));
 
 % 9. We cannot apply more than one coupon c to the pizza p which is justified for free pizza (this one is missing in the lecture notes):
 constraint forall(p in pizzas)((sum(c in coupons)(Justifies[c,p])<=1));
