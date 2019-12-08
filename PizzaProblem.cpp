@@ -127,7 +127,7 @@ int main() {
   start = std::clock();
   //     sanity test
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 1 Correct answer: 0, our answer: " << res
        << " Time: " << duration << endl;
   ;
@@ -139,6 +139,8 @@ int main() {
   free = {1, 1, 2, 2};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
+
   cout << "Test 2 Correct answer: 46, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -149,7 +151,7 @@ int main() {
   free = {1, 1, 1, 0};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 3 Correct answer: 340, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -160,7 +162,7 @@ int main() {
   free = {1, 1, 2, 9, 1, 0, 1};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 4 Correct answer: 35, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -173,7 +175,7 @@ int main() {
           6, 9, 8, 5,  8, 5, 5, 8, 9, 5, 5, 7, 5, 6, 5};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 10 Correct answer: 311, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -187,7 +189,7 @@ int main() {
           7, 8, 10, 10, 9, 10, 8, 8, 10, 10, 9, 6, 7, 9, 7};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 12 Correct answer: 545, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -202,7 +204,7 @@ int main() {
           9, 6, 5, 5, 8, 6,  6, 7, 8, 8, 8, 6};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 13 Correct answer: 1051, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -217,7 +219,7 @@ int main() {
           10, 6, 7, 9, 5, 10, 6, 10, 9, 9, 10, 8,  5, 5, 7};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 14 Correct answer: 1205, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -232,7 +234,7 @@ int main() {
           7, 5,  9, 5, 6, 9, 10, 5, 8, 6,  9, 9, 8, 9, 5, 8, 6};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 15 Correct answer: 1388, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -248,7 +250,7 @@ int main() {
           5,  7, 9, 9, 8,  9,  6, 9, 7, 5, 10, 6, 10, 8,  10, 6, 5,  9, 10, 8};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 16 Correct answer: 1636, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -263,7 +265,7 @@ int main() {
           9, 5, 6, 8, 9, 7, 9, 6, 5, 5, 8, 6};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 17 Correct answer: 856, our answer: " << res
        << " Time: " << duration << endl;
   // test 18
@@ -277,7 +279,7 @@ int main() {
           7, 5, 5,  6, 7, 6, 5, 9, 6, 5, 5, 5,  8, 6, 8};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 18 Correct answer: 952, our answer: " << res
        << " Time: " << duration << endl;
   // test 19
@@ -291,7 +293,7 @@ int main() {
           6,  7, 10, 9, 9,  8, 6, 5, 9, 9,  5,  9, 5,  10, 8, 8, 9};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 19 Correct answer: N/A, our answer: " << res
        << " Time: " << duration << endl;
   // test 20
@@ -306,7 +308,7 @@ int main() {
           8, 8, 9, 9, 8, 8, 8, 6, 7, 8, 5, 7, 5, 6, 7, 9, 5, 6, 6, 10};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 20 Correct answer: N/A, our answer: " << res
        << " Time: " << duration << endl;
   // test 21
@@ -325,7 +327,7 @@ int main() {
           7,  5, 7,  10, 9, 6, 9,  8, 5, 6, 5, 8, 6, 5, 10, 6};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 21 Correct answer: N/A, our answer: " << res
        << " Time: " << duration << endl;
   // test 22
@@ -357,7 +359,7 @@ int main() {
           53, 60, 59, 55, 50, 60, 56, 48, 58, 41, 42, 46, 41, 60, 47};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 22 Correct answer: N/A, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -389,7 +391,7 @@ int main() {
           53, 60, 59, 55, 50, 60, 56, 48, 58, 41, 42, 46, 41, 60, 47};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 23 Correct answer: N/A, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -421,7 +423,7 @@ int main() {
           33, 40, 39, 35, 30, 40, 36, 28, 38, 21, 22, 26, 21, 40, 27};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 24 Correct answer: N/A, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -453,7 +455,7 @@ int main() {
           53, 60, 59, 55, 50, 60, 56, 48, 58, 41, 42, 46, 41, 60, 47};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 25 Correct answer: N/A, our answer: " << res
        << " Time: " << duration << endl;
 
@@ -485,7 +487,7 @@ int main() {
           20, 17, 18, 13, 14, 12, 12, 17, 14, 13, 18, 12, 16, 20, 19};
   coupons = convert(buy, free);
   res = pizzaProblem->miniCost(pizzas, coupons);
-  duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+  duration = (std::clock() - start)/(double)(CLOCKS_PER_SEC);
   cout << "Test 26 Correct answer: N/A, our answer: " << res
        << " Time: " << duration << endl;
   return 0;
