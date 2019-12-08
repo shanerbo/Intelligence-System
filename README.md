@@ -1,4 +1,41 @@
 # cmpt417
+### There are 25 files in total.
+1. cmpt417Pizza.mzn Main MiniZinc program.
+2. instanceGenerator.py A Python script could generate test instances with different congurations.
+3. PizzaProblem.cpp A C++11 program which uses Depth First Search and Backtracking algorithm to solve pizza problem. There are 6 more complicated test instances inside of it.
+4. README.md A markdown file summarizes everything about this project.
+5. test1.dzn Test Instance.
+6. test2.dzn Test Instance.
+7. test3.dzn Test Instance.
+8. test4.dzn Test Instance.
+9. test5.dzn Test Instance.
+10. test6.dzn Test Instance.
+11. test7.dzn Test Instance.
+12. test8.dzn Test Instance.
+13. test9.dzn Test Instance.
+14. test10.dzn Test Instance.
+15. test11.dzn Test Instance.
+16. test12.dzn Test Instance.
+17. test13.dzn Test Instance.
+18. test14.dzn Test Instance.
+19. test15.dzn Test Instance.
+20. test16.dzn Test Instance.
+21. test17.dzn Test Instance.
+22. test18.dzn Test Instance.
+23. test19.dzn Test Instance.
+24. test20.dzn Test Instance.
+25. cmpt417_report.pdf.
+
+
+
+
+
+
+
+
+
+# Requirements
+
 ## Part I
 
 ### Choose a problem from the five problems from Section 12 of the course notes, "Representing Problems: Examples from the 2015 LP/CP Programming Competition". Further information on these problems can be found on the 2015 LP/CP Programming Contest web page.
