@@ -1,9 +1,9 @@
 # cmpt417
 ### There are 25 files in total.
 1. cmpt417Pizza.mzn Main MiniZinc program.
-2. instanceGenerator.py A Python script could generate test instances with different congurations.
+2. instanceGenerator.py A Python script could generate test instances with different congurations.
 3. PizzaProblem.cpp A C++11 program which uses Depth First Search and Backtracking algorithm to solve pizza problem. There are 6 more complicated test instances inside of it.
-4. README.md A markdown file summarizes everything about this project.
+4. README.md A markdown file summarizes everything about this project.
 5. test1.dzn Test Instance.
 6. test2.dzn Test Instance.
 7. test3.dzn Test Instance.
